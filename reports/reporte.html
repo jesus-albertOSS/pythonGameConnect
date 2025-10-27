@@ -1,0 +1,363 @@
+
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>Dashboard Game Connect</title>
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- JS -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+        <style>
+            body {
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                background-color: #f4f6f8;
+                padding: 30px;
+            }
+            h1 {
+                color: #2c3e50;
+                text-align: center;
+                margin-bottom: 40px;
+            }
+            .card {
+                border: none;
+                border-radius: 15px;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            }
+            .table-section {
+                margin-top: 40px;
+            }
+            table {
+                width: 100%;
+                background-color: white;
+            }
+            canvas {
+                background: #fff;
+                border-radius: 10px;
+                padding: 20px;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            }
+        </style>
+    </head>
+    <body>
+        <h1>🎮 Dashboard Game Connect</h1>
+
+        <!-- Tarjetas de resumen -->
+        <div class="container text-center mb-5">
+            <div class="row g-4">
+                <div class="col-md-3">
+                    <div class="card p-3">
+                        <h5>Total Usuarios</h5>
+                        <h2>6</h2>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card p-3">
+                        <h5>Total Productos</h5>
+                        <h2>15</h2>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card p-3">
+                        <h5>Precio Promedio</h5>
+                        <h2>$209.32</h2>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card p-3">
+                        <h5>Top Usuario</h5>
+                        <h2>alex</h2>
+                        <p>20 pts</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Gráficos -->
+        <div class="container mb-5">
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <h4>🏆 Top 5 Usuarios por Puntos</h4>
+                    <canvas id="chartUsers"></canvas>
+                </div>
+                <div class="col-md-6">
+                    <h4>💰 Distribución de Precios</h4>
+                    <canvas id="chartPrices"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tablas -->
+        <div class="container table-section">
+            <h3>👥 Usuarios</h3>
+            <table border="1" class="dataframe display table table-striped" id="tabla_usuarios">
+  <thead>
+    <tr style="text-align: right;">
+      <th>id</th>
+      <th>name</th>
+      <th>email</th>
+      <th>puntos</th>
+      <th>createdAt</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>3b5fa0c4-54ab-4e7d-9ad7-e12ab3de4806</td>
+      <td>jesus</td>
+      <td>usajesuscash@gmail.com</td>
+      <td>0</td>
+      <td>2025-10-21T18:30:26</td>
+    </tr>
+    <tr>
+      <td>09b2e9b7-5533-4d90-b724-15ebf65761d9</td>
+      <td>Sauli</td>
+      <td>saul@gmail.com</td>
+      <td>0</td>
+      <td>2025-10-21T19:23:11</td>
+    </tr>
+    <tr>
+      <td>fc287db7-c169-42b3-84a5-580e41ef2f1e</td>
+      <td>yisus</td>
+      <td>yisusjaog@gmail.com</td>
+      <td>0</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <td>f163bb06-3cde-4bd6-8e63-50df917f1ec1</td>
+      <td>Game Connect</td>
+      <td>GameConnect@gmail.com</td>
+      <td>0</td>
+      <td>2025-10-23T18:41:24.676</td>
+    </tr>
+    <tr>
+      <td>034953ed-4d21-4c5e-a496-3493932eb525</td>
+      <td>alex</td>
+      <td>alex@gmail.com</td>
+      <td>20</td>
+      <td>2025-10-23T00:06:01.135</td>
+    </tr>
+    <tr>
+      <td>de62d41f-caa0-4d81-9c09-09e85ab338cf</td>
+      <td>michel</td>
+      <td>michel@gmail.com</td>
+      <td>11</td>
+      <td>2025-10-22T00:30:53.012</td>
+    </tr>
+  </tbody>
+</table>
+        </div>
+
+        <div class="container table-section">
+            <h3>🛍️ Productos</h3>
+            <table border="1" class="dataframe display table table-striped" id="tabla_productos">
+  <thead>
+    <tr style="text-align: right;">
+      <th>id</th>
+      <th>name</th>
+      <th>description</th>
+      <th>feature</th>
+      <th>price</th>
+      <th>imageUrl</th>
+      <th>createdAt</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>07ef9fee-ec72-4fca-962a-db006fd3d783</td>
+      <td>Assassin’s Creed Mirage</td>
+      <td>{"details": "Assassin’s Creed Mirage ambientado en Bagdad", "category": "Videojuego"}</td>
+      <td>DISPONIBLE</td>
+      <td>59.99</td>
+      <td>https://image.api.playstation.com/vulcan/ap/rnd/202310/1616/7dfe05cc56bbe68b29038194fe09cff0b2218cc186496a8f.jpg</td>
+      <td>2025-10-04T15:28:46.06502</td>
+    </tr>
+    <tr>
+      <td>1233ade5-68fa-4d94-8d76-f82cba57bb33</td>
+      <td>Cyberpunk 2077 Phantom Liberty</td>
+      <td>{"details": "Cyberpunk 2077 Phantom Liberty incluye expansión y mejoras", "category": "Videojuego"}</td>
+      <td>DISPONIBLE\r\n</td>
+      <td>59.99</td>
+      <td>https://c4.wallpaperflare.com/wallpaper/891/442/338/cyber-cyberpunk-cyberpunk-2077-cyberpunk-2077-phantom-liberty-cyberpunk-edgerunners-hd-wallpaper-preview.jpg</td>
+      <td>2025-10-04T15:28:46.06502</td>
+    </tr>
+    <tr>
+      <td>175ee368-9e0c-412c-92a0-349fa51f1128</td>
+      <td>Halo Infinite</td>
+      <td>{"details": "Halo Infinite para Xbox Series X y PC", "category": "Videojuego"}</td>
+      <td>DISPONIBLE\r\n</td>
+      <td>59.99</td>
+      <td>https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/media/image/2021/06/halo-infinite-2371029.jpg?tf=3840x</td>
+      <td>2025-10-04T15:28:46.06502</td>
+    </tr>
+    <tr>
+      <td>1885b75f-ae4e-4cd8-baa3-1a265d369b18</td>
+      <td>Xbox Series X</td>
+      <td>{"details": "Xbox Series X con 1TB SSD y soporte 8K", "category": "Consola"}</td>
+      <td>DISPONIBLE\r\n</td>
+      <td>679.99</td>
+      <td>https://cms-assets.xboxservices.com/assets/ec/f6/ecf6f6a6-6048-40db-9171-cc62813ffe97.jpg?n=Xbox-Series-X_Super-Hero-1400_Complete-Control_1920x1400_01.jpg</td>
+      <td>2025-10-04T15:28:46.06502</td>
+    </tr>
+    <tr>
+      <td>506c65f4-0fe1-4fb0-8974-47e9f4a62d8b</td>
+      <td>Nintendo Switch OLED</td>
+      <td>{"details": "Nintendo Switch OLED con pantalla de 7 pulgadas y Joy-Con blancos", "category": "Consola"}</td>
+      <td>DISPONIBLE\r\n</td>
+      <td>399.99</td>
+      <td>https://cnnespanol.cnn.com/wp-content/uploads/2021/10/oled-nintendo-switch.png</td>
+      <td>2025-10-04T15:28:46.06502</td>
+    </tr>
+    <tr>
+      <td>520392ae-3304-413c-a51e-b7a44f94a6c3</td>
+      <td>God of War: Ragnarök</td>
+      <td>{"details": "God of War: Ragnarök para PS5 con narrativa épica", "category": "Videojuego"}</td>
+      <td>DISPONIBLE\r\n</td>
+      <td>69.99</td>
+      <td>https://image.api.playstation.com/vulcan/ap/rnd/202207/1117/qpCTTb74VvcbqDjxkBmY4i1G.jpg</td>
+      <td>2025-10-04T15:28:46.06502</td>
+    </tr>
+    <tr>
+      <td>5fcba364-207f-4354-a79e-ae1dd9409479</td>
+      <td>Tekken 8</td>
+      <td>{"details": "Tekken 8 con nuevos personajes y motor Unreal Engine 5", "category": "Videojuego"}</td>
+      <td>DISPONIBLE\r\n</td>
+      <td>69.99</td>
+      <td>https://static.bandainamcoent.eu/high/tekken/tekken-8/00-page-setup/TEKKEN8_Header_mobile_2.jpg</td>
+      <td>2025-10-04T15:28:46.06502</td>
+    </tr>
+    <tr>
+      <td>8c36ee60-f506-41c9-8219-b44d7439b903</td>
+      <td>Steam Deck</td>
+      <td>{"details": "Steam Deck 512GB NVMe SSD para juegos de PC portátiles", "category": "Consola Portátil"}</td>
+      <td>DISPONIBLE\r\n</td>
+      <td>649.99</td>
+      <td>https://cdn.mos.cms.futurecdn.net/H2vWr4yZxmMdbRZvSHgqbN-1200-80.jpg</td>
+      <td>2025-10-04T15:28:46.06502</td>
+    </tr>
+    <tr>
+      <td>9136ece0-203c-4e5a-82c0-70cd4a42e794</td>
+      <td>Elden Ring</td>
+      <td>{"details": "Elden Ring con exploración en mundo abierto y combates épicos", "category": "Videojuego"}</td>
+      <td>DISPONIBLE\r\n</td>
+      <td>69.99</td>
+      <td>https://www.nintendo.com/eu/media/images/assets/nintendo_switch_2_games/eldenringtarnishededition/2x1_NSwitch2_EldenRing.jpg</td>
+      <td>2025-10-04T15:28:46.06502</td>
+    </tr>
+    <tr>
+      <td>b92868ae-2782-4332-9838-971d4a8041df</td>
+      <td>Spider-Man 2</td>
+      <td>{"details": "Spider-Man 2 para PS5, secuela con nuevo sistema de combate", "category": "Videojuego"}</td>
+      <td>DISPONIBLE\r\n</td>
+      <td>69.99</td>
+      <td>https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2651280/ss_f4140ba12158b812d9c1adc86c484d8e84b92e92.1920x1080.jpg?t=1750954033</td>
+      <td>2025-10-04T15:28:46.06502</td>
+    </tr>
+    <tr>
+      <td>bfccd08a-0fd3-4089-8423-893838ce797f</td>
+      <td>GTA V Premium Edition</td>
+      <td>{"details": "Grand Theft Auto V Edición Premium con todo el contenido", "category": "Videojuego"}</td>
+      <td>DISPONIBLE\r\n</td>
+      <td>49.99</td>
+      <td>https://media.rockstargames.com/rockstargames-newsite/uploads/3318f4e14af22baef853213b01a8390ca6921c2b.jpg</td>
+      <td>2025-10-04T15:28:46.06502</td>
+    </tr>
+    <tr>
+      <td>c535b455-cf2b-4e36-858f-24ab4930339b</td>
+      <td>PlayStation 5</td>
+      <td>{"details": "PlayStation 5 con mando DualSense y gráficos 4K", "category": "Consola"}</td>
+      <td>AGOTADO</td>
+      <td>699.99</td>
+      <td>https://s3.amazonaws.com/rtvc-assets-senalcolombia.gov.co/s3fs-public/styles/imagen_noticia/public/field/image/image%20-%202024-11-19T130005.255.png?itok=vQ0RVn0h</td>
+      <td>2025-10-04T15:28:46.06502</td>
+    </tr>
+    <tr>
+      <td>d6a4b05a-504a-4db6-a13a-80ce3f13cc50</td>
+      <td>Zelda: Tears of the Kingdom</td>
+      <td>{"details": "The Legend of Zelda: Tears of the Kingdom para Nintendo Switch", "category": "Videojuego"}</td>
+      <td>AGOTADO</td>
+      <td>69.99</td>
+      <td>https://zeldacentral.com/wp-content/uploads/2025/03/Tears-of-the-Kingdom-wallpaper.jpg</td>
+      <td>2025-10-04T15:28:46.06502</td>
+    </tr>
+    <tr>
+      <td>e32947be-8a98-47ff-8203-d2da012ac29b</td>
+      <td>Resident Evil 4 Remake</td>
+      <td>{"details": "Resident Evil 4 Remake con gráficos y jugabilidad mejorados", "category": "Videojuego"}</td>
+      <td>AGOTADO</td>
+      <td>59.99</td>
+      <td>https://juegosdigitalescolombia.com/files/images/noticias/1655577151-6.jpg</td>
+      <td>2025-10-04T15:28:46.06502</td>
+    </tr>
+    <tr>
+      <td>e55b8c35-354f-44a0-990e-2b91d5b79b02</td>
+      <td>FIFA 25</td>
+      <td>{"details": "FIFA 25 con nuevo motor gráfico y actualizaciones de clubes", "category": "Videojuego"}</td>
+      <td>AGOTADO</td>
+      <td>69.99</td>
+      <td>https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70010000074799/ab3989c5c208683e007deb3327a1ce70a8fa6cb38b06cfb8c2c80d563b19cfc7</td>
+      <td>2025-10-04T15:28:46.06502</td>
+    </tr>
+  </tbody>
+</table>
+        </div>
+
+        <!-- Scripts -->
+        <script>
+            // Inicializar DataTables
+            $(document).ready(function() {
+                $('#tabla_usuarios').DataTable({ pageLength: 5, language: { search: "Buscar usuario:" } });
+                $('#tabla_productos').DataTable({ pageLength: 5, language: { search: "Buscar producto:" } });
+            });
+
+            // Gráfico de usuarios
+            const topUsers = [{"name": "alex", "puntos": 20}, {"name": "michel", "puntos": 11}, {"name": "jesus", "puntos": 0}, {"name": "Sauli", "puntos": 0}, {"name": "yisus", "puntos": 0}];
+            const ctxUsers = document.getElementById('chartUsers').getContext('2d');
+            new Chart(ctxUsers, {
+                type: 'bar',
+                data: {
+                    labels: topUsers.map(u => u.name),
+                    datasets: [{
+                        label: 'Puntos',
+                        data: topUsers.map(u => u.puntos),
+                        backgroundColor: '#3498db'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: { beginAtZero: true }
+                    }
+                }
+            });
+
+            // Gráfico de precios
+            const prices = [59.99, 59.99, 59.99, 679.99, 399.99, 69.99, 69.99, 649.99, 69.99, 69.99, 49.99, 699.99, 69.99, 59.99, 69.99];
+            const ctxPrices = document.getElementById('chartPrices').getContext('2d');
+            new Chart(ctxPrices, {
+                type: 'line',
+                data: {
+                    labels: prices.map((_, i) => i + 1),
+                    datasets: [{
+                        label: 'Precio',
+                        data: prices,
+                        borderColor: '#2ecc71',
+                        fill: false
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: { beginAtZero: true }
+                    }
+                }
+            });
+        </script>
+    </body>
+    </html>
+    
