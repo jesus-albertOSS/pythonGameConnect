@@ -36,12 +36,47 @@
             table {
                 width: 100%;
                 background-color: white;
+                word-wrap: break-word;
             }
             canvas {
                 background: #fff;
                 border-radius: 10px;
                 padding: 20px;
                 box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            }
+            /* Tabla de productos */
+            #tabla_productos {
+                border-collapse: separate;
+                border-spacing: 0 8px;
+                table-layout: fixed;
+                word-wrap: break-word;
+            }
+            #tabla_productos thead {
+                background-color: #2c3e50;
+                color: #fff;
+            }
+            #tabla_productos tbody tr {
+                background-color: #ffffff;
+                transition: all 0.2s ease;
+            }
+            #tabla_productos tbody tr:hover {
+                background-color: #f0f7ff;
+                transform: scale(1.01);
+            }
+            #tabla_productos td, #tabla_productos th {
+                padding: 12px 16px;
+                border: none;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                white-space: nowrap;
+            }
+            #tabla_productos td span {
+                cursor: help;
+                display: inline-block;
+                max-width: 350px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
             }
         </style>
     </head>
@@ -54,7 +89,7 @@
                 <div class="col-md-3">
                     <div class="card p-3">
                         <h5>Total Usuarios</h5>
-                        <h2>6</h2>
+                        <h2>8</h2>
                     </div>
                 </div>
                 <div class="col-md-3">
@@ -143,10 +178,24 @@
       <td>NaT</td>
     </tr>
     <tr>
+      <td>9357c70b-921c-4d39-a81d-4dbb235f01e0</td>
+      <td>Brandon</td>
+      <td>brandon@gmail.com</td>
+      <td>0</td>
+      <td>NaT</td>
+    </tr>
+    <tr>
       <td>de62d41f-caa0-4d81-9c09-09e85ab338cf</td>
       <td>michel</td>
       <td>michel@gmail.com</td>
-      <td>6</td>
+      <td>0</td>
+      <td>NaT</td>
+    </tr>
+    <tr>
+      <td>0760a59f-b9c1-42c9-a789-84a1a1c1678e</td>
+      <td>Yetzon</td>
+      <td>yetzonguillen@gmail.com</td>
+      <td>0</td>
       <td>NaT</td>
     </tr>
   </tbody>
@@ -155,7 +204,9 @@
 
         <div class="container table-section">
             <h3>🛍️ Productos</h3>
-            <table border="1" class="dataframe display table table-striped" id="tabla_productos">
+            <div class="card p-4 shadow-sm" style="background: white; border-radius: 15px;">
+                <div class="table-responsive">
+                    <table border="1" class="dataframe table table-hover align-middle mb-0" id="tabla_productos">
   <thead>
     <tr style="text-align: right;">
       <th>id</th>
@@ -165,146 +216,164 @@
       <th>price</th>
       <th>imageUrl</th>
       <th>createdAt</th>
+      <th>tematica</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>07ef9fee-ec72-4fca-962a-db006fd3d783</td>
-      <td>Assassin’s Creed Mirage</td>
-      <td>{"details": "Assassin’s Creed Mirage ambientado en Bagdad", "category": "Videojuego"}</td>
-      <td>DISPONIBLE</td>
-      <td>59.99</td>
-      <td>https://image.api.playstation.com/vulcan/ap/rnd/202310/1616/7dfe05cc56bbe68b29038194fe09cff0b2218cc186496a8f.jpg</td>
-      <td>2025-10-04 15:28:46.065020</td>
-    </tr>
-    <tr>
-      <td>1233ade5-68fa-4d94-8d76-f82cba57bb33</td>
-      <td>Cyberpunk 2077 Phantom Liberty</td>
-      <td>{"details": "Cyberpunk 2077 Phantom Liberty incluye expansión y mejoras", "category": "Videojuego"}</td>
-      <td>DISPONIBLE\r\n</td>
-      <td>59.99</td>
-      <td>https://c4.wallpaperflare.com/wallpaper/891/442/338/cyber-cyberpunk-cyberpunk-2077-cyberpunk-2077-phantom-liberty-cyberpunk-edgerunners-hd-wallpaper-preview.jpg</td>
-      <td>2025-10-04 15:28:46.065020</td>
-    </tr>
-    <tr>
-      <td>175ee368-9e0c-412c-92a0-349fa51f1128</td>
-      <td>Halo Infinite</td>
-      <td>{"details": "Halo Infinite para Xbox Series X y PC", "category": "Videojuego"}</td>
-      <td>DISPONIBLE\r\n</td>
-      <td>59.99</td>
-      <td>https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/media/image/2021/06/halo-infinite-2371029.jpg?tf=3840x</td>
-      <td>2025-10-04 15:28:46.065020</td>
-    </tr>
-    <tr>
-      <td>1885b75f-ae4e-4cd8-baa3-1a265d369b18</td>
-      <td>Xbox Series X</td>
-      <td>{"details": "Xbox Series X con 1TB SSD y soporte 8K", "category": "Consola"}</td>
-      <td>DISPONIBLE\r\n</td>
-      <td>679.99</td>
-      <td>https://cms-assets.xboxservices.com/assets/ec/f6/ecf6f6a6-6048-40db-9171-cc62813ffe97.jpg?n=Xbox-Series-X_Super-Hero-1400_Complete-Control_1920x1400_01.jpg</td>
-      <td>2025-10-04 15:28:46.065020</td>
-    </tr>
-    <tr>
-      <td>506c65f4-0fe1-4fb0-8974-47e9f4a62d8b</td>
-      <td>Nintendo Switch OLED</td>
-      <td>{"details": "Nintendo Switch OLED con pantalla de 7 pulgadas y Joy-Con blancos", "category": "Consola"}</td>
-      <td>DISPONIBLE\r\n</td>
-      <td>399.99</td>
-      <td>https://cnnespanol.cnn.com/wp-content/uploads/2021/10/oled-nintendo-switch.png</td>
-      <td>2025-10-04 15:28:46.065020</td>
-    </tr>
-    <tr>
-      <td>520392ae-3304-413c-a51e-b7a44f94a6c3</td>
-      <td>God of War: Ragnarök</td>
-      <td>{"details": "God of War: Ragnarök para PS5 con narrativa épica", "category": "Videojuego"}</td>
-      <td>DISPONIBLE\r\n</td>
-      <td>69.99</td>
-      <td>https://image.api.playstation.com/vulcan/ap/rnd/202207/1117/qpCTTb74VvcbqDjxkBmY4i1G.jpg</td>
-      <td>2025-10-04 15:28:46.065020</td>
-    </tr>
-    <tr>
-      <td>5fcba364-207f-4354-a79e-ae1dd9409479</td>
-      <td>Tekken 8</td>
-      <td>{"details": "Tekken 8 con nuevos personajes y motor Unreal Engine 5", "category": "Videojuego"}</td>
-      <td>DISPONIBLE\r\n</td>
-      <td>69.99</td>
-      <td>https://static.bandainamcoent.eu/high/tekken/tekken-8/00-page-setup/TEKKEN8_Header_mobile_2.jpg</td>
-      <td>2025-10-04 15:28:46.065020</td>
-    </tr>
-    <tr>
       <td>8c36ee60-f506-41c9-8219-b44d7439b903</td>
       <td>Steam Deck</td>
-      <td>{"details": "Steam Deck 512GB NVMe SSD para juegos de PC portátiles", "category": "Consola Portátil"}</td>
+      <td><span title="Steam Deck es la consola portátil creada por Valve que permite jugar títulos de PC en cualquier lugar. Equipada con un potente hardware AMD personalizado, ofrece un rendimiento sólido y una experiencia fluida en juegos modernos. Su pantalla táctil, controles integrados y sistema basado en SteamOS brindan comodidad y versatilidad. Además, permite instalar otros sistemas operativos y servicios, convirtiéndola en una plataforma abierta ideal para jugadores que buscan potencia y movilidad.">Steam Deck es la consola portátil creada por Valve que permite jugar títulos de PC en cualquier luga...</span></td>
       <td>DISPONIBLE\r\n</td>
       <td>649.99</td>
       <td>https://cdn.mos.cms.futurecdn.net/H2vWr4yZxmMdbRZvSHgqbN-1200-80.jpg</td>
       <td>2025-10-04 15:28:46.065020</td>
+      <td>Estrategia</td>
     </tr>
     <tr>
-      <td>9136ece0-203c-4e5a-82c0-70cd4a42e794</td>
-      <td>Elden Ring</td>
-      <td>{"details": "Elden Ring con exploración en mundo abierto y combates épicos", "category": "Videojuego"}</td>
+      <td>520392ae-3304-413c-a51e-b7a44f94a6c3</td>
+      <td>God of War: Ragnarök</td>
+      <td><span title="God of War: Ragnarök es una épica aventura de acción desarrollada por Santa Monica Studio. Continúa la historia de Kratos y su hijo Atreus mientras enfrentan el fin de los tiempos en la mitología nórdica. Con combates intensos, paisajes impresionantes y una narrativa profunda, el juego combina emoción, estrategia y drama familiar. Sus mejoras gráficas y su jugabilidad refinada consolidan a Ragnarök como una de las experiencias más impactantes y cinematográficas de la generación.">God of War: Ragnarök es una épica aventura de acción desarrollada por Santa Monica Studio. Continúa ...</span></td>
       <td>DISPONIBLE\r\n</td>
       <td>69.99</td>
-      <td>https://www.nintendo.com/eu/media/images/assets/nintendo_switch_2_games/eldenringtarnishededition/2x1_NSwitch2_EldenRing.jpg</td>
+      <td>https://image.api.playstation.com/vulcan/ap/rnd/202207/1117/qpCTTb74VvcbqDjxkBmY4i1G.jpg</td>
       <td>2025-10-04 15:28:46.065020</td>
+      <td>Estrategia</td>
+    </tr>
+    <tr>
+      <td>5fcba364-207f-4354-a79e-ae1dd9409479</td>
+      <td>Tekken 8</td>
+      <td><span title="Tekken 8 es la nueva entrega de la legendaria saga de lucha creada por Bandai Namco. Desarrollado con Unreal Engine 5, ofrece gráficos realistas y combates llenos de intensidad. La historia continúa el enfrentamiento entre Jin Kazama y Kazuya Mishima, con un tono más emocional. Su nuevo sistema Heat impulsa el combate ofensivo, ofreciendo una experiencia más dinámica y espectacular para los fans del género.">Tekken 8 es la nueva entrega de la legendaria saga de lucha creada por Bandai Namco. Desarrollado co...</span></td>
+      <td>DISPONIBLE\r\n</td>
+      <td>69.99</td>
+      <td>https://static.bandainamcoent.eu/high/tekken/tekken-8/00-page-setup/TEKKEN8_Header_mobile_2.jpg</td>
+      <td>2025-10-04 15:28:46.065020</td>
+      <td>Estrategia</td>
     </tr>
     <tr>
       <td>b92868ae-2782-4332-9838-971d4a8041df</td>
       <td>Spider-Man 2</td>
-      <td>{"details": "Spider-Man 2 para PS5, secuela con nuevo sistema de combate", "category": "Videojuego"}</td>
+      <td><span title="Spider-Man 2 es un juego de acción y aventura desarrollado por Insomniac Games en exclusiva para PlayStation 5. Continúa las historias de Peter Parker y Miles Morales mientras enfrentan nuevas amenazas, como Venom y Kraven. Con un sistema de combate mejorado, desplazamiento más fluido y una ciudad de Nueva York más viva, ofrece una experiencia cinematográfica espectacular. Su narrativa emotiva y ritmo dinámico consolidan a Spider-Man 2 como uno de los mejores títulos del género.">Spider-Man 2 es un juego de acción y aventura desarrollado por Insomniac Games en exclusiva para Pla...</span></td>
       <td>DISPONIBLE\r\n</td>
       <td>69.99</td>
       <td>https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2651280/ss_f4140ba12158b812d9c1adc86c484d8e84b92e92.1920x1080.jpg?t=1750954033</td>
       <td>2025-10-04 15:28:46.065020</td>
-    </tr>
-    <tr>
-      <td>bfccd08a-0fd3-4089-8423-893838ce797f</td>
-      <td>GTA V Premium Edition</td>
-      <td>{"details": "Grand Theft Auto V Edición Premium con todo el contenido", "category": "Videojuego"}</td>
-      <td>DISPONIBLE\r\n</td>
-      <td>49.99</td>
-      <td>https://media.rockstargames.com/rockstargames-newsite/uploads/3318f4e14af22baef853213b01a8390ca6921c2b.jpg</td>
-      <td>2025-10-04 15:28:46.065020</td>
+      <td>RPG</td>
     </tr>
     <tr>
       <td>c535b455-cf2b-4e36-858f-24ab4930339b</td>
       <td>PlayStation 5</td>
-      <td>{"details": "PlayStation 5 con mando DualSense y gráficos 4K", "category": "Consola"}</td>
+      <td><span title="PlayStation 5 es la consola de nueva generación de Sony, diseñada para ofrecer potencia, velocidad y una experiencia inmersiva sin precedentes. Equipada con un SSD ultrarrápido y una GPU RDNA 2, permite gráficos en 4K y cargas casi instantáneas. Su mando DualSense introduce vibración háptica y gatillos adaptativos, mejorando la inmersión. Con un catálogo exclusivo y un diseño futurista, la PS5 redefine el gaming moderno con rendimiento y estilo excepcionales.">PlayStation 5 es la consola de nueva generación de Sony, diseñada para ofrecer potencia, velocidad y...</span></td>
       <td>AGOTADO</td>
       <td>699.99</td>
       <td>https://s3.amazonaws.com/rtvc-assets-senalcolombia.gov.co/s3fs-public/styles/imagen_noticia/public/field/image/image%20-%202024-11-19T130005.255.png?itok=vQ0RVn0h</td>
       <td>2025-10-04 15:28:46.065020</td>
-    </tr>
-    <tr>
-      <td>d6a4b05a-504a-4db6-a13a-80ce3f13cc50</td>
-      <td>Zelda: Tears of the Kingdom</td>
-      <td>{"details": "The Legend of Zelda: Tears of the Kingdom para Nintendo Switch", "category": "Videojuego"}</td>
-      <td>AGOTADO</td>
-      <td>69.99</td>
-      <td>https://zeldacentral.com/wp-content/uploads/2025/03/Tears-of-the-Kingdom-wallpaper.jpg</td>
-      <td>2025-10-04 15:28:46.065020</td>
+      <td>Simulación\r\n</td>
     </tr>
     <tr>
       <td>e32947be-8a98-47ff-8203-d2da012ac29b</td>
       <td>Resident Evil 4 Remake</td>
-      <td>{"details": "Resident Evil 4 Remake con gráficos y jugabilidad mejorados", "category": "Videojuego"}</td>
+      <td><span title="Resident Evil 4 Remake es una reinvención del clásico de Capcom que redefine la experiencia de terror y acción. Leon S. Kennedy regresa en una misión para rescatar a la hija del presidente, enfrentando hordas de infectados en un entorno más oscuro y detallado. Con gráficos modernos, jugabilidad mejorada y una atmósfera intensa, el remake mantiene la esencia del original mientras ofrece una experiencia más inmersiva, cinematográfica y llena de tensión.">Resident Evil 4 Remake es una reinvención del clásico de Capcom que redefine la experiencia de terro...</span></td>
       <td>AGOTADO</td>
       <td>59.99</td>
       <td>https://juegosdigitalescolombia.com/files/images/noticias/1655577151-6.jpg</td>
       <td>2025-10-04 15:28:46.065020</td>
+      <td>RPG</td>
+    </tr>
+    <tr>
+      <td>07ef9fee-ec72-4fca-962a-db006fd3d783</td>
+      <td>Assassin’s Creed Mirage</td>
+      <td><span title="Assassin’s Creed Mirage devuelve a la saga sus raíces clásicas, con un enfoque en el sigilo, el parkour y los asesinatos precisos. Ambientado en la Bagdad del siglo IX, sigue la historia de Basim, un joven ladrón que se convierte en maestro asesino. Con una narrativa intensa, escenarios detallados y una jugabilidad más ágil, el juego combina nostalgia y modernidad, ofreciendo una experiencia más centrada y fiel al espíritu original de Assassin’s Creed.">Assassin’s Creed Mirage devuelve a la saga sus raíces clásicas, con un enfoque en el sigilo, el park...</span></td>
+      <td>DISPONIBLE</td>
+      <td>59.99</td>
+      <td>https://image.api.playstation.com/vulcan/ap/rnd/202310/1616/7dfe05cc56bbe68b29038194fe09cff0b2218cc186496a8f.jpg</td>
+      <td>2025-10-04 15:28:46.065020</td>
+      <td>Acción</td>
+    </tr>
+    <tr>
+      <td>175ee368-9e0c-412c-92a0-349fa51f1128</td>
+      <td>Halo Infinite</td>
+      <td><span title="Halo Infinite es un juego de disparos en primera persona desarrollado por 343 Industries que continúa la legendaria saga del Jefe Maestro. Ambientado en el misterioso anillo Zeta Halo, combina combates clásicos con nuevas mecánicas y un mundo más abierto que incentiva la exploración. Su modo multijugador gratuito ofrece acción intensa, personalización y una experiencia competitiva que rinde homenaje a los orígenes de la franquicia mientras impulsa su evolución visual y narrativa.">Halo Infinite es un juego de disparos en primera persona desarrollado por 343 Industries que continú...</span></td>
+      <td>DISPONIBLE\r\n</td>
+      <td>59.99</td>
+      <td>https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/media/image/2021/06/halo-infinite-2371029.jpg?tf=3840x</td>
+      <td>2025-10-04 15:28:46.065020</td>
+      <td>Aventura</td>
+    </tr>
+    <tr>
+      <td>1885b75f-ae4e-4cd8-baa3-1a265d369b18</td>
+      <td>Xbox Series X</td>
+      <td><span title="Xbox Series X es la consola más potente de Microsoft, pensada para ofrecer una experiencia fluida y de alto rendimiento. Con su procesador AMD Zen 2 y gráficos RDNA 2, alcanza resoluciones 4K y hasta 120 fps. Su SSD ultra rápido reduce los tiempos de carga y permite cambiar entre juegos en segundos. Gracias a su diseño elegante, funcionamiento silencioso y compatibilidad con generaciones anteriores, la Series X se consolida como una máquina ideal para jugadores exigentes.">Xbox Series X es la consola más potente de Microsoft, pensada para ofrecer una experiencia fluida y ...</span></td>
+      <td>DISPONIBLE\r\n</td>
+      <td>679.99</td>
+      <td>https://cms-assets.xboxservices.com/assets/ec/f6/ecf6f6a6-6048-40db-9171-cc62813ffe97.jpg?n=Xbox-Series-X_Super-Hero-1400_Complete-Control_1920x1400_01.jpg</td>
+      <td>2025-10-04 15:28:46.065020</td>
+      <td>Aventura\r\n</td>
+    </tr>
+    <tr>
+      <td>506c65f4-0fe1-4fb0-8974-47e9f4a62d8b</td>
+      <td>Nintendo Switch OLED</td>
+      <td><span title="Nintendo Switch OLED es una versión mejorada de la consola híbrida de Nintendo. Destaca por su pantalla OLED de 7 pulgadas, que ofrece colores más vivos y mejor contraste. Mantiene la versatilidad de jugar en modo portátil o en TV, con un soporte trasero más estable y mejor audio. Su base incluye puerto LAN para conexión por cable, ideal para partidas online más estables. Es la opción perfecta para disfrutar la experiencia Switch con una calidad visual superior y mayor comodidad.">Nintendo Switch OLED es una versión mejorada de la consola híbrida de Nintendo. Destaca por su panta...</span></td>
+      <td>DISPONIBLE\r\n</td>
+      <td>399.99</td>
+      <td>https://cnnespanol.cnn.com/wp-content/uploads/2021/10/oled-nintendo-switch.png</td>
+      <td>2025-10-04 15:28:46.065020</td>
+      <td>Aventura\r\n</td>
+    </tr>
+    <tr>
+      <td>9136ece0-203c-4e5a-82c0-70cd4a42e794</td>
+      <td>Elden Ring</td>
+      <td><span title="Elden Ring es un juego de rol y acción desarrollado por FromSoftware y producido junto a George R. R. Martin. Ambientado en las Tierras Intermedias, ofrece un vasto mundo abierto lleno de secretos, desafíos y criaturas imponentes. Su combate combina exploración, estrategia y dificultad característica del estudio. Con libertad total para crear tu propio estilo de juego, Elden Ring se consagra como una experiencia épica y profundamente inmersiva.">Elden Ring es un juego de rol y acción desarrollado por FromSoftware y producido junto a George R. R...</span></td>
+      <td>DISPONIBLE\r\n</td>
+      <td>69.99</td>
+      <td>https://www.nintendo.com/eu/media/images/assets/nintendo_switch_2_games/eldenringtarnishededition/2x1_NSwitch2_EldenRing.jpg</td>
+      <td>2025-10-04 15:28:46.065020</td>
+      <td>Simulación</td>
+    </tr>
+    <tr>
+      <td>bfccd08a-0fd3-4089-8423-893838ce797f</td>
+      <td>GTA V Premium Edition</td>
+      <td><span title="GTA V Premium Edition incluye la experiencia completa del aclamado Grand Theft Auto V junto con GTA Online. Desarrollado por Rockstar Games, combina una historia llena de acción con tres protagonistas en un mundo abierto vibrante y detallado. Esta edición ofrece bonificaciones, contenido adicional y acceso al modo online con expansiones. Con gráficos mejorados y libertad total para explorar Los Santos, sigue siendo un referente del entretenimiento interactivo moderno.">GTA V Premium Edition incluye la experiencia completa del aclamado Grand Theft Auto V junto con GTA ...</span></td>
+      <td>DISPONIBLE\r\n</td>
+      <td>49.99</td>
+      <td>https://media.rockstargames.com/rockstargames-newsite/uploads/3318f4e14af22baef853213b01a8390ca6921c2b.jpg</td>
+      <td>2025-10-04 15:28:46.065020</td>
+      <td>Simulación\r\n</td>
+    </tr>
+    <tr>
+      <td>d6a4b05a-504a-4db6-a13a-80ce3f13cc50</td>
+      <td>Zelda: Tears of the Kingdom</td>
+      <td><span title="Zelda: Tears of the Kingdom es la secuela de Breath of the Wild, desarrollada por Nintendo para Switch. Amplía el mundo abierto de Hyrule con nuevas islas flotantes, habilidades creativas y una narrativa más profunda. Link debe enfrentar una nueva amenaza que pone en peligro el reino, usando su ingenio y libertad total para explorar y construir. Con mecánicas innovadoras y un diseño artístico impresionante, se consolida como una joya del género de aventuras.">Zelda: Tears of the Kingdom es la secuela de Breath of the Wild, desarrollada por Nintendo para Swit...</span></td>
+      <td>AGOTADO</td>
+      <td>69.99</td>
+      <td>https://zeldacentral.com/wp-content/uploads/2025/03/Tears-of-the-Kingdom-wallpaper.jpg</td>
+      <td>2025-10-04 15:28:46.065020</td>
+      <td>RPG</td>
     </tr>
     <tr>
       <td>e55b8c35-354f-44a0-990e-2b91d5b79b02</td>
       <td>FIFA 25</td>
-      <td>{"details": "FIFA 25 con nuevo motor gráfico y actualizaciones de clubes", "category": "Videojuego"}</td>
+      <td><span title="FIFA 25 (oficialmente EA Sports FC 25) es la nueva entrega del simulador de fútbol de EA Sports. Introduce el sistema FC IQ, que mejora la inteligencia táctica de los jugadores y permite más de 50 roles diferentes en el campo. Gracias a la tecnología HyperMotion V, las animaciones son más realistas y naturales. Además, el nuevo modo Rush 5v5 ofrece partidos rápidos y dinámicos, consolidando una experiencia más fluida, estratégica y visualmente impresionante.">FIFA 25 (oficialmente EA Sports FC 25) es la nueva entrega del simulador de fútbol de EA Sports. Int...</span></td>
       <td>AGOTADO</td>
       <td>69.99</td>
       <td>https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70010000074799/ab3989c5c208683e007deb3327a1ce70a8fa6cb38b06cfb8c2c80d563b19cfc7</td>
       <td>2025-10-04 15:28:46.065020</td>
+      <td>RPG</td>
+    </tr>
+    <tr>
+      <td>1233ade5-68fa-4d94-8d76-f82cba57bb33</td>
+      <td>Cyberpunk 2077 Phantom Liberty</td>
+      <td><span title="Cyberpunk 2077: Phantom Liberty es la expansión del aclamado RPG futurista de CD Projekt RED. Ambientada en el distrito de Dogtown, introduce una trama de espionaje y traición donde V colabora con la agente Solomon Reed, interpretado por Idris Elba. Ofrece nuevas misiones, armas y vehículos, junto con mejoras en el sistema de combate y la IA. Con una atmósfera más densa y narrativa cinematográfica, eleva el universo de Cyberpunk 2077 a un nuevo nivel de calidad e inmersión.">Cyberpunk 2077: Phantom Liberty es la expansión del aclamado RPG futurista de CD Projekt RED. Ambien...</span></td>
+      <td>DISPONIBLE\r\n</td>
+      <td>59.99</td>
+      <td>https://c4.wallpaperflare.com/wallpaper/891/442/338/cyber-cyberpunk-cyberpunk-2077-cyberpunk-2077-phantom-liberty-cyberpunk-edgerunners-hd-wallpaper-preview.jpg</td>
+      <td>2025-10-04 15:28:46.065020</td>
+      <td>Acción</td>
     </tr>
   </tbody>
 </table>
+                </div>
+            </div>
         </div>
 
         <!-- Scripts -->
@@ -316,7 +385,7 @@
             });
 
             // Gráfico de usuarios
-            const topUsers = [{"name": "alex", "puntos": 20}, {"name": "michel", "puntos": 6}, {"name": "jesus", "puntos": 0}, {"name": "Sauli", "puntos": 0}, {"name": "yisus", "puntos": 0}];
+            const topUsers = [{"name": "alex", "puntos": 20}, {"name": "jesus", "puntos": 0}, {"name": "Sauli", "puntos": 0}, {"name": "yisus", "puntos": 0}, {"name": "Game Connect", "puntos": 0}];
             const ctxUsers = document.getElementById('chartUsers').getContext('2d');
             new Chart(ctxUsers, {
                 type: 'bar',
@@ -337,7 +406,7 @@
             });
 
             // Gráfico de precios
-            const prices = [59.99, 59.99, 59.99, 679.99, 399.99, 69.99, 69.99, 649.99, 69.99, 69.99, 49.99, 699.99, 69.99, 59.99, 69.99];
+            const prices = [649.99, 69.99, 69.99, 69.99, 699.99, 59.99, 59.99, 59.99, 679.99, 399.99, 69.99, 49.99, 69.99, 69.99, 59.99];
             const ctxPrices = document.getElementById('chartPrices').getContext('2d');
             new Chart(ctxPrices, {
                 type: 'line',

@@ -20,6 +20,12 @@ def generar_reporte_html(df_users: pd.DataFrame, df_products: pd.DataFrame, outp
     top_users = df_users.nlargest(5, "puntos")[["name", "puntos"]].to_dict(orient="records")
     price_values = df_products["price"].tolist()
 
+    # ✂️ Limitar descripción larga
+    if "description" in df_products.columns:
+        df_products["description"] = df_products["description"].apply(
+            lambda x: f'<span title="{x}">{x[:100]}{"..." if len(x) > 100 else ""}</span>' if isinstance(x, str) else x
+        )
+
     # === 📄 HTML completo ===
     html = f"""
     <!DOCTYPE html>
@@ -59,12 +65,47 @@ def generar_reporte_html(df_users: pd.DataFrame, df_products: pd.DataFrame, outp
             table {{
                 width: 100%;
                 background-color: white;
+                word-wrap: break-word;
             }}
             canvas {{
                 background: #fff;
                 border-radius: 10px;
                 padding: 20px;
                 box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            }}
+            /* Tabla de productos */
+            #tabla_productos {{
+                border-collapse: separate;
+                border-spacing: 0 8px;
+                table-layout: fixed;
+                word-wrap: break-word;
+            }}
+            #tabla_productos thead {{
+                background-color: #2c3e50;
+                color: #fff;
+            }}
+            #tabla_productos tbody tr {{
+                background-color: #ffffff;
+                transition: all 0.2s ease;
+            }}
+            #tabla_productos tbody tr:hover {{
+                background-color: #f0f7ff;
+                transform: scale(1.01);
+            }}
+            #tabla_productos td, #tabla_productos th {{
+                padding: 12px 16px;
+                border: none;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                white-space: nowrap;
+            }}
+            #tabla_productos td span {{
+                cursor: help;
+                display: inline-block;
+                max-width: 350px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
             }}
         </style>
     </head>
@@ -124,7 +165,16 @@ def generar_reporte_html(df_users: pd.DataFrame, df_products: pd.DataFrame, outp
 
         <div class="container table-section">
             <h3>🛍️ Productos</h3>
-            {df_products.to_html(index=False, classes="display table table-striped", table_id="tabla_productos")}
+            <div class="card p-4 shadow-sm" style="background: white; border-radius: 15px;">
+                <div class="table-responsive">
+                    {df_products.to_html(
+                        index=False,
+                        classes="table table-hover align-middle mb-0",
+                        table_id="tabla_productos",
+                        escape=False  # 👈 Permite HTML en descripción
+                    )}
+                </div>
+            </div>
         </div>
 
         <!-- Scripts -->

@@ -1,7 +1,7 @@
 import subprocess
 from services.api_client import get_data
 from data.preprocess import preprocess_users, preprocess_products
-from data.analytics import top_users_by_points, price_distribution
+from data.visualizacion import top_users_by_points, price_distribution
 from utils.report_generator import generar_reporte_html  # usa tu versión gaming neón
 
 def main():
