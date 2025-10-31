@@ -1,8 +1,10 @@
 import os
 from dotenv import load_dotenv
 
-load_dotenv()
+# Cargar las variables del archivo .env dentro de la carpeta "env"
+load_dotenv(dotenv_path="env/.env")
 
-API_URL = os.getenv("API_URL", "https://pi-backend2-ru4x.onrender.com")
-API_USER = os.getenv("API_USER", "admin")
-API_PASS = os.getenv("API_PASS", "admin123")
+# Obtener las variables del entorno
+API_URL = os.getenv("API_URL")
+API_USER = os.getenv("API_USER")
+API_PASS = os.getenv("API_PASS")
